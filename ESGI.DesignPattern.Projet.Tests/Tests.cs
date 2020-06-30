@@ -86,18 +86,30 @@ namespace ESGI.DesignPattern.Projet.Tests
         }
     }
 
-    internal class TestingDescriptorMapper : DescriptorMapper
+    internal class TestingDescriptorMapper
     {
-        List<AttributeDescriptor> descriptors;
+        //List<AttributeDescriptor> descriptors;
+        DescriptorMapper descriptorMapper;
+
 
         public TestingDescriptorMapper()
         {
-            descriptors = CreateAttributeDescriptors();
+            //descriptors = CreateAttributeDescriptors();
+            descriptorMapper = new DescriptorMapper();
+
+            descriptorMapper.Add("remoteId", typeof(int));
+            descriptorMapper.Add("createdDate", typeof(DateTime));
+            descriptorMapper.Add("lastChangedDate", typeof(DateTime));
+            descriptorMapper.Add("createdBy", typeof(User));
+            descriptorMapper.Add("lastChangedBy", typeof(User));
+            descriptorMapper.Add("optimisticLockVersion", typeof(int));
+            descriptorMapper.Add("isOk", typeof(Boolean));
+
         }
 
         public AttributeDescriptor GetMappedDescriptorFor(string descriptorName)
         {
-            return descriptors.Find(descriptor => descriptor.DescriptorName == descriptorName);
+            return descriptorMapper.descriptors.Find(descriptor => descriptor.DescriptorName == descriptorName);
         }
     }
 }
