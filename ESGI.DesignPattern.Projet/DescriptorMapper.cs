@@ -3,20 +3,30 @@ using System.Collections.Generic;
 
 namespace ESGI.DesignPattern.Projet
 {
-    public class DescriptorMapper
-    {
-        protected List<AttributeDescriptor> CreateAttributeDescriptors()
-        {
-            var result = new List<AttributeDescriptor>();
 
-            result.Add(new DefaultDescriptor("remoteId", GetClass(), typeof(int)));
-            result.Add(new DefaultDescriptor("createdDate", GetClass(), typeof(DateTime)));
-            result.Add(new DefaultDescriptor("lastChangedDate", GetClass(), typeof(DateTime)));
-            result.Add(new ReferenceDescriptor("createdBy", GetClass(), typeof(User)));
-            result.Add(new ReferenceDescriptor("lastChangedBy", GetClass(), typeof(User)));
-            result.Add(new DefaultDescriptor("optimisticLockVersion", GetClass(), typeof(int)));
-            return result;
+    public interface Mapper
+    {
+        void Add(String fieldName, Type forType);
+    }
+
+
+    public class DescriptorMapper : Mapper
+    {
+
+        public List<AttributeDescriptor> descriptors { get; }
+
+        public DescriptorMapper()
+        {
+            descriptors = new List<AttributeDescriptor>();
         }
+
+        public void Add(String fieldName, Type forType)
+        {
+            AttributeDescriptor attribute = DescriptorFactory.Create(fieldName, GetClass(), forType);
+
+            this.descriptors.Add(attribute);
+        }
+
 
         private Type GetClass()
         {
