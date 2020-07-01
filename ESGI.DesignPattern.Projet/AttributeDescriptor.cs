@@ -2,7 +2,7 @@
 
 namespace ESGI.DesignPattern.Projet
 {
-    public class AttributeDescriptor
+    public abstract class AttributeDescriptor
     {
         readonly string descriptorName;
         readonly Type mapperType;
@@ -14,6 +14,7 @@ namespace ESGI.DesignPattern.Projet
             this.mapperType = mapperType;
             this.forType = forType;
         }
+
 
         public string DescriptorName => descriptorName;
     }
