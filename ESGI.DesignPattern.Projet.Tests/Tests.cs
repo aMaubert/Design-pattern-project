@@ -90,7 +90,7 @@ namespace ESGI.DesignPattern.Projet.Tests
     {
         List<AttributeDescriptor> descriptors;
 
-        public TestingDescriptorMapper() : base(new GeneratorDescriptorType())
+        public TestingDescriptorMapper() : base(new GeneratorByType())
         {
             descriptors = CreateAttributeDescriptors();
         }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace ESGI.DesignPattern.Projet
 {
 
-    public interface GeneratorDescriptor
+    public interface DescriptorGenerator
     {
         AttributeDescriptor generate(String field, Type mapperType, Type forType);
     }
 
-    public class GeneratorDescriptorType : GeneratorDescriptor
+    public class GeneratorByType : DescriptorGenerator
     {
         public AttributeDescriptor generate(String field, Type mapperType, Type forType)
         {
@@ -28,7 +28,7 @@ namespace ESGI.DesignPattern.Projet
         }
     }
 
-    class GeneratorDescriptorFieldName : GeneratorDescriptor
+    class GeneratorByField : DescriptorGenerator
     {
         public AttributeDescriptor generate(String field, Type mapperType, Type forType)
         {
@@ -50,9 +50,9 @@ namespace ESGI.DesignPattern.Projet
 
     public class DescriptorMapper
     {
-        public GeneratorDescriptor generatorDescriptor;
+        public DescriptorGenerator generatorDescriptor;
 
-        public DescriptorMapper(GeneratorDescriptor generatorDescriptor)
+        public DescriptorMapper(DescriptorGenerator generatorDescriptor)
         {
             this.generatorDescriptor = generatorDescriptor;
         }   
