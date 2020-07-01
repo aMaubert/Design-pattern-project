@@ -92,7 +92,7 @@ namespace ESGI.DesignPattern.Projet.Tests
         DescriptorMapper descriptorMapper;
 
 
-        public TestingDescriptorMapper()
+        public TestingDescriptorMapper() : base(new GeneratorDescriptorType())
         {
             //descriptors = CreateAttributeDescriptors();
             descriptorMapper = new DescriptorMapper();
