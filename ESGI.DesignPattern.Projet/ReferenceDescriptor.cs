@@ -9,5 +9,6 @@ namespace ESGI.DesignPattern.Projet
             : base(descriptorName, mapperType, forType)
         {
         }
+
     }
 }

@@ -8,6 +8,8 @@ namespace ESGI.DesignPattern.Projet
         public DefaultDescriptor(string descriptorName, Type mapperType, Type forType)
             : base(descriptorName, mapperType, forType)
         {
+
         }
+
     }
 }
